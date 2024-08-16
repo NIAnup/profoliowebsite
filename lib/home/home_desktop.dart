@@ -8,6 +8,59 @@ class Home_Desktop extends StatefulWidget {
   State<Home_Desktop> createState() => _Home_DesktopState();
 }
 
+List<Map<String, dynamic>> whatweoffercontent = [
+  {
+    "image": "icon.png",
+    "title": "Website developerment",
+    "description":
+        "We build websites that are not just visually stunning but also highly functional. Whether you need a simple site or a complex web application, we customize everything to suit your business needs.",
+    "Subtitle": "Custom Websites:",
+    "subtitleDescripation": "Tailored to your goals and brand.",
+    "Subtitle2": "CMS Solutions:",
+    "subtitleDescripation2":
+        "Easily manage your site with platforms like WordPress.",
+    "Subtitle3": "E-commerce:",
+    "subtitleDescripation3":
+        "Create an online store that offers a seamless shopping experience.",
+    "Subtitle4": "Web Apps:",
+    "subtitleDescripation4":
+        "Develop advanced web applications to streamline your business operations.",
+  },
+  {
+    "image": "icon.png",
+    "title": "Mobile App Development",
+    "description":
+        "Our mobile apps are designed to engage users on iOS and Android. We handle everything from concept to launch, ensuring your app is smooth, reliable, and meets your users’ needs.",
+    "Subtitle": "Native & Cross-Platform Apps:",
+    "subtitleDescripation": "Build apps for iOS, Android, or both.",
+    "Subtitle2": "User-Friendly Design:",
+    "subtitleDescripation2":
+        "Intuitive interfaces that keep users coming back.",
+    "Subtitle3": "Ongoing Support:",
+    "subtitleDescripation3":
+        "Continuous updates and maintenance to keep your app running smoothly.",
+    // "Subtitle4": "Web Apps:",
+    // "subtitleDescripation4":
+    //     "Develop advanced web applications to streamline your business operations.",
+  },
+  {
+    "image": "icon.png",
+    "title": "E-commerce Solutions",
+    "description":
+        "We create e-commerce platforms that make online shopping easy and enjoyable. Whether starting fresh or upgrading, we tailor everything to fit your business model.",
+    "Subtitle": "Custom Online Stores:",
+    "subtitleDescripation": "Designed to meet your specific needs.",
+    "Subtitle2": "Secure Payment Integration:",
+    "subtitleDescripation2": "Ensuring safe and easy transactions.",
+    "Subtitle3": "Inventory Management:",
+    "subtitleDescripation3":
+        " Efficient tools to manage your products and orders.",
+    // "Subtitle4": "Web Apps:",
+    // "subtitleDescripation4":
+    //     "Develop advanced web applications to streamline your business operations.",
+  }
+];
+
 class _Home_DesktopState extends State<Home_Desktop> {
   @override
   Widget build(BuildContext context) {
@@ -130,16 +183,25 @@ class _Home_DesktopState extends State<Home_Desktop> {
             height: height,
             width: width,
             color: Colors.white,
-            child: Stack(
-              alignment: Alignment.topCenter,
+            child: Column(
+              // alignment: Alignment.topCenter,
               children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "What We Offer",
+                    style: GoogleFonts.rowdies(
+                        fontSize: 40, fontWeight: FontWeight.w400),
+                  ),
+                ),
                 Container(
                   height: height * 0.8,
                   width: width * 0.8,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 3,
+                    itemCount: whatweoffercontent.length,
                     itemBuilder: (BuildContext context, int index) {
+                      final content = whatweoffercontent[index];
                       return Container(
                         margin: EdgeInsets.all(4),
                         height: height,
@@ -155,8 +217,12 @@ class _Home_DesktopState extends State<Home_Desktop> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Image.asset(
+                              content["image"],
+                              width: width * 0.05,
+                            ),
                             Text(
-                              "Website Development",
+                              content['title'] ?? "",
                               style: GoogleFonts.bebasNeue(
                                   fontSize: 25, fontWeight: FontWeight.bold),
                             ),
@@ -167,7 +233,7 @@ class _Home_DesktopState extends State<Home_Desktop> {
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 textAlign: TextAlign.center,
-                                """We build websites that are not just visually stunning but also highly functional. Whether you need a simple site or a complex web application, we customize everything to suit your business needs.""",
+                                """${content['description'] ?? ""}""",
                                 style: GoogleFonts.rowdies(
                                     fontSize: 14, fontWeight: FontWeight.w500),
                               ),
@@ -176,7 +242,7 @@ class _Home_DesktopState extends State<Home_Desktop> {
                               height: 50,
                             ),
                             Text(
-                              "Custom Web Development:",
+                              content['Subtitle'] ?? "",
                               style: GoogleFonts.bebasNeue(
                                   fontSize: 25, fontWeight: FontWeight.w500),
                             ),
@@ -188,7 +254,7 @@ class _Home_DesktopState extends State<Home_Desktop> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   textAlign: TextAlign.center,
-                                  "We create websites that fit your exact needs and goals.",
+                                  content["subtitleDescripation"] ?? "",
                                   style: GoogleFonts.rowdies(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w100),
@@ -199,7 +265,7 @@ class _Home_DesktopState extends State<Home_Desktop> {
                               height: 20,
                             ),
                             Text(
-                              "CMS Integration:",
+                              content['Subtitle2'] ?? "",
                               style: GoogleFonts.bebasNeue(
                                   fontSize: 25, fontWeight: FontWeight.w500),
                             ),
@@ -208,7 +274,7 @@ class _Home_DesktopState extends State<Home_Desktop> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   textAlign: TextAlign.center,
-                                  "Want to update your site on your own? We can set you up with WordPress or another CMS to make it easy.",
+                                  content["subtitleDescripation2"] ?? "",
                                   style: GoogleFonts.rowdies(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w100),
@@ -219,7 +285,7 @@ class _Home_DesktopState extends State<Home_Desktop> {
                               height: 20,
                             ),
                             Text(
-                              "E-commerce Sites:",
+                              content['Subtitle3'] ?? "",
                               style: GoogleFonts.bebasNeue(
                                   fontSize: 25, fontWeight: FontWeight.w500),
                             ),
@@ -228,7 +294,7 @@ class _Home_DesktopState extends State<Home_Desktop> {
                                 padding: const EdgeInsets.all(10.0),
                                 child: Text(
                                   textAlign: TextAlign.center,
-                                  "If you’re selling online, we’ll build a store that makes shopping a breeze for your customers.",
+                                  content["subtitleDescripation3"],
                                   style: GoogleFonts.rowdies(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w100),
@@ -239,7 +305,7 @@ class _Home_DesktopState extends State<Home_Desktop> {
                               height: 20,
                             ),
                             Text(
-                              "Web Applications:",
+                              content['Subtitle4'] ?? "",
                               style: GoogleFonts.bebasNeue(
                                   fontSize: 25, fontWeight: FontWeight.w500),
                             ),
@@ -248,7 +314,7 @@ class _Home_DesktopState extends State<Home_Desktop> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   textAlign: TextAlign.center,
-                                  "Need something more advanced? We can develop web apps that handle all kinds of business processes.",
+                                  content["subtitleDescripation4"] ?? "",
                                   style: GoogleFonts.rowdies(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w100),
